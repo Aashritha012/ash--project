@@ -1,5 +1,5 @@
 const express = require("express");
-const User = require('../Models/User');
+const User = require('../models/user');
 const router = express.Router();
 
 router 
@@ -7,7 +7,7 @@ router
         try
         {
             const user = await User.login(req.body.username, req.body.password);
-            res.send({...user, password: undefined});
+            res.send({...user});
         }catch(console)
         {
             res.status(401).send({message: error.message});
@@ -18,7 +18,7 @@ router
         try
         {
             const user = await User.register(req.body.username, req.body.password);
-            res.send({...user, password: undefined});
+            res.send({...user});
         } 
         catch(error)
         {
@@ -29,7 +29,7 @@ router
     .put('/update', async(req,res) =>{
         try{
             const user=await User.updatePassword(req.body.id, req.body.password)
-            res.send({...user, password:undefined});
+            res.send({...user});
         }
         catch(error)
         {
