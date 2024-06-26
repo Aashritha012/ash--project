@@ -29,5 +29,5 @@ app.use(function(req, res, next) {
   app.use('/order',orderRoutes);
   app.use('/product',productRoutes);
   
-  const PORT = process.env.PORT || 3000;
+  const PORT = process.env.PORT || 5000;
   app.listen(PORT, () => console.log(`Server started!! Listening on port ${PORT}!!! :)`));

@@ -18,7 +18,7 @@ router.get('/get', async (req, res) => {
     try {
         const item = await item.findOne({ title: req.query.title });
         if (!item) {
-            return res.status(404).send({ item: "Book not found" });
+            return res.status(404).send({ item: "order not found" });
         }
         res.send(item);
     } catch (error) {
