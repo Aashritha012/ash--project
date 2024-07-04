@@ -1,10 +1,11 @@
 
 import './App.css';
-import Products from './components/Products.js';
-import About from './components/About';
-import Home from './components/Home';
-import Login from './components/Login';
-import Register from './components/Register';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Products from './components/pages/Products.js';
+import About from './components/pages/About';
+import Navbar from './components/pages/Navbar';
+import Login from './components/pages/Login';
+import Register from './components/pages/Register';
 
 
 const products = [
@@ -28,10 +29,13 @@ function App() {
   return (
     <div className="App">
       <h1>Welcome!</h1>
-      <Home/>
-      <Login/>
-      <Register/>
-      <About/>
+      <BrowserRouter>
+       <Route path='/' element={<Navbar/>}>
+        <Route path="Login" element={<Login/>}/>
+        <Route path="Register" element={<Register/>}/>
+        <Route index element={<About />}/>
+       </Route>
+      </BrowserRouter>
 
       <Products products={products} />
     </div>
