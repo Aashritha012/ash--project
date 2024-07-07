@@ -31,16 +31,16 @@ const Register = ({ setIsAuthenticated }) => {
         password,
       }, 'POST');
 
-      if (!data.message) {
+      if (data.username) {
         setMessage('Registration successful!');
-        setIsAuthenticated(true); // Set authentication state to true
+        setIsAuthenticated(true); 
         navigate('/profile');
       } else {
-        setMessage(data.message); // Display specific error message from backend
+        setMessage(data.message || 'An error occurred. Please try again.'); 
       }
     } catch (error) {
       console.error('Error during registration:', error);
-      setMessage('An error occurred. Please try again.'); // Generic error message
+      setMessage('An error occurred. Please try again.'); 
     }
   };
 
